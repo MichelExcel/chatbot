@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .chat-container {
+      width: 400px;
+      text-align: center;
+    }
+    #userInput {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    #response {
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: white;
+      min-height: 100px;
+    }
+    .char-counter {
+      font-size: 12px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <img src="sua_foto_aqui.jpg" alt="Minha Foto" style="width: 100px; border-radius: 50%;">
+    <textarea id="userInput" rows="4" placeholder="Digite sua mensagem..." maxlength="500"></textarea>
+    <div class="char-counter">500 caracteres restantes</div>
+    <button onclick="sendMessage()">Enviar</button>
+    <div id="response">Respostas aparecerão aqui.</div>
+  </div>
+
+  <script>
+    const userInput = document.getElementById('userInput');
+    const charCounter = document.querySelector('.char-counter');
+    
+    userInput.addEventListener('input', () => {
+      const remaining = 500 - userInput.value.length;
+      charCounter.textContent = `${remaining} caracteres restantes`;
+    });
+
+    function sendMessage() {
+      const message = userInput.value;
+      if (message.length === 0) return;
+      
+      // Aqui a mensagem seria enviada ao backend
+      // Enviar mensagem para a função AWS Lambda e exibir resposta
+      // Simulação de resposta:
+      document.getElementById('response').innerText = "Resposta do chatbot...";
+    }
+  </script>
+</body>
+</html>
